@@ -48,6 +48,7 @@ resource "terraform_data" "main" {
 
   provisioner "remote-exec" {
     inline = [
+      "sudo dnf install -y dos2unix",
       "dos2unix /tmp/${var.component}.sh",
       "chmod +x /tmp/${var.component}.sh",
       "sudo sh /tmp/${var.component}.sh ${var.component} ${var.environment}"
