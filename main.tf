@@ -1,5 +1,5 @@
 resource "aws_lb_target_group" "main" {
-  name     = "${var.project}-${var.environment}-${var.component}" #roboshop-dev-catalogue
+  name     = "${var.project}-${var.environment}-${var.component}" #roboshop-dev-${var.component}
   port     = local.tg_port
   protocol = "HTTP"
   vpc_id   = local.vpc_id
@@ -84,7 +84,6 @@ resource "terraform_data" "main_delete" {
 
   depends_on = [aws_ami_from_instance.main]
 }
-
 
 resource "aws_launch_template" "main" {
   name = "${var.project}-${var.environment}-${var.component}"
